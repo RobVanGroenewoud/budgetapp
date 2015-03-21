@@ -1,0 +1,31 @@
+<template name="header">
+    <nav class="ui menu">
+            <a href="{{pathFor 'home'}}" class="{{isActiveRoute regex='home'}} item">
+                <i class="home icon"></i> Home
+            </a>
+            {{#if currentUser}}
+            <a href="{{pathFor 'transactions'}}" class="{{isActiveRoute regex='transactions'}} item">Transactions</a>
+            <a href="{{pathFor 'categories'}}" class="{{isActiveRoute regex='categories'}} item">Categories</a>
+            {{/if}}
+            <div class="right menu">
+                {{> userInfo}}     
+            </div>
+        </nav>
+</template>
+
+<template name="userInfo">
+    {{#if currentUser}}
+        {{> loggedin}}
+    {{ else }}
+        {{> loggedout}}
+    {{/if}}
+</template>
+
+<template name="loggedin">
+    <div class="ui item"><i class="user icon"></i> {{currentUser.profile.name}}</div>
+    <a href="#" class="ui item logout">Logout</a>
+</template>
+
+<template name="loggedout">
+    <a href="#" class="ui item login"><i class="user icon"></i> Login</a>
+</template>

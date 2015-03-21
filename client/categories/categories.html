@@ -1,0 +1,24 @@
+<template name="categories">
+    <p>Categories</p>
+
+    <table class="table ui">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each categories}}
+                {{> category}}
+            {{/each}}
+        </tbody>
+    </table>
+</template>
+
+<template name="category">
+    <tr>
+        <td>{{name}}</td>
+        <td></td>
+    </tr>
+</template>

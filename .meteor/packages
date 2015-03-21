@@ -9,3 +9,8 @@ autopublish
 insecure
 semantic:ui-css
 fourseven:scss
+accounts-google
+service-configuration
+msavin:mongol
+iron:router
+zimme:iron-router-active
