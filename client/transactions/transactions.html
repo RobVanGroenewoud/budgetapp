@@ -1,15 +1,19 @@
 <template name="transactions">
-    <table class="ui table">
+    <section class="ui segment">
+        {{> upload}}
+    </section>
+    {{nrOfTransactions}} transactions <a href="#" class="ui button clearall">Clear all</a>
+    <table class="ui unstackable table">
         <thead>
             <tr>
                 <th>Date</th>
-                <th>Amount</th>
+                <th class="right aligned">Amount</th>
                 <th>Description</th>
             </tr>
         </thead>
         <tbody>
             {{#each transactions}}
-                {{> transation}}
+                {{> transaction}}
             {{/each}}
         </tbody>
     </table>
@@ -18,7 +22,7 @@
 <template name="transaction">
     <tr>
         <td>{{date}}</td>
-        <td>{{amount}}</td>
-        <td>{{descriptions}}</td>
+        <td class="right aligned {{amountClass}}">{{currency amount}}</td>
+        <td>{{description}}</td>
     </tr>
 </template>

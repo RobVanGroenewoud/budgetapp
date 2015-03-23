@@ -5,5 +5,13 @@ Router.configure({
 Router.route('home', {
     path: '/'
 });
-Router.route('transactions');
+Router.route('transactions', {
+    path: '/transactions',
+    waitOn: function() {
+        return Meteor.subscribe('transactions');
+    },
+    data: function() {
+        return { transactions: Transactions.find({}) };
+    }
+});
 Router.route('categories');
