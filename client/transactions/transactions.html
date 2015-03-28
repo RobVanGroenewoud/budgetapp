@@ -3,7 +3,7 @@
         {{> upload}}
     </section>
     {{nrOfTransactions}} transactions <a href="#" class="ui button clearall">Clear all</a>
-    <table class="ui unstackable table">
+    <table class="ui unstackable striped celled table">
         <thead>
             <tr>
                 <th>Date</th>
@@ -21,7 +21,7 @@
 
 <template name="transaction">
     <tr>
-        <td>{{date}}</td>
+        <td>{{dateFormat date}}</td>
         <td class="right aligned {{amountClass}}">{{currency amount}}</td>
         <td>{{description}}</td>
     </tr>

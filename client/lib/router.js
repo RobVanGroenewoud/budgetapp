@@ -1,5 +1,6 @@
 Router.configure({
-    layoutTemplate: 'defaultLayout'
+    layoutTemplate: 'defaultLayout',
+    loadingTemplate: 'loading'
 });
 
 Router.route('home', {

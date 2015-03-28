@@ -1,3 +1,5 @@
-Meteor.publish('transactions', function(){
-    return Transactions.find();
+Meteor.publish('transactions', function() {
+    if(this.userId) {
+        return Transactions.find();
+    }
 });

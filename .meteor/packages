@@ -13,3 +13,4 @@ service-configuration
 msavin:mongol
 iron:router
 zimme:iron-router-active
+momentjs:moment
