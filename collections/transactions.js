@@ -1,6 +1,6 @@
 Transactions = new Mongo.Collection('transactions', {
     transform: function(doc) {
-        return new Transaction(doc._id, doc.date, doc.description, doc.amount);
+        return new Transaction(doc._id, doc.date, doc.description, doc.amount, doc.category);
     }
 });
 
@@ -16,11 +16,12 @@ Transactions.allow({
     }
 });
 
-Transaction = function(id, date, description, amount) {
+Transaction = function(id, date, description, amount, category) {
     this._id = id;
     this._date = date;
     this._description = description;
     this._amount = amount;
+    this._category = category;
     this._hash =  date +'_'+ amount + '_' + description;
 };
 
@@ -40,6 +41,9 @@ Transaction.prototype = {
     get hash() {
         return this._hash;
     },
+    get category() {
+        return this._category;
+    },
     save: function(callback) {
 
         if (Transactions.findOne({ hash : this.hash })) {
@@ -51,6 +55,7 @@ Transaction.prototype = {
             date : this.date,
             description: this.description,
             amount: this.amount,
+            category: this.category,
             hash: this.hash
         };
 

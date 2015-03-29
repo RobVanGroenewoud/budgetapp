@@ -3,3 +3,7 @@ Meteor.publish('transactions', function() {
         return Transactions.find();
     }
 });
+
+Meteor.publish('categories', function(){
+    return Categories.find();
+});

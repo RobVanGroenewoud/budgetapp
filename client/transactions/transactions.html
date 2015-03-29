@@ -2,13 +2,26 @@
     <section class="ui segment">
         {{> upload}}
     </section>
-    {{nrOfTransactions}} transactions <a href="#" class="ui button clearall">Clear all</a>
+
+    <div class="ui small statistics">
+        <div class="statistic">
+            <div class="value">{{nrOfTransactions}}</div>
+            <div class="label">Transactions</div>
+        </div>
+        <div class="statistic">
+            <div class="value">{{nrOfUncategorizedTransactions}}</div>
+            <div class="label">Uncategorized</div>
+        </div>
+    </div>
+
+    <a href="#" class="ui button clearall">Clear all</a>
     <table class="ui unstackable striped celled table">
         <thead>
             <tr>
                 <th>Date</th>
                 <th class="right aligned">Amount</th>
                 <th>Description</th>
+                <th>Category</th>
             </tr>
         </thead>
         <tbody>
@@ -24,5 +37,27 @@
         <td>{{dateFormat date}}</td>
         <td class="right aligned {{amountClass}}">{{currency amount}}</td>
         <td>{{description}}</td>
+        <td>{{>categorySelect}}</td>
     </tr>
+</template>
+
+<template name="categorySelect">
+    <div class="ui form">
+        <div class="field">
+            <select name="category" class="category">
+                <option value="">-</option>
+                {{#each options}}
+                    {{> categorySelectOption}}
+                {{/each}}
+            </select>
+        </div> 
+    </div>
+</template>
+
+<template name="categorySelectOption">
+    {{#if isSelected}}
+    <option value="{{_id}}" selected="selected">{{name}}</option>
+    {{else}}
+    <option value="{{_id}}">{{name}}</option>
+    {{/if}}
 </template>

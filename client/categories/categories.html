@@ -1,7 +1,8 @@
 <template name="categories">
-    <p>Categories</p>
 
-    <table class="table ui">
+    {{>newCategory}}
+    
+    <table class="ui table">
         <thead>
             <tr>
                 <th>Category</th>
@@ -18,7 +19,40 @@
 
 <template name="category">
     <tr>
-        <td>{{name}}</td>
-        <td></td>
+        <td>{{#if isBeingEdited}}
+                <form class="edit-category">
+                    
+                <div class="ui action input">
+                    <input type="text" class="edited-name" value="{{name}}" />
+                    <button class="compact ui icon button" type="submit"><i class="checkmark icon"></i></button>
+                </div>
+                </form>
+            {{else}}
+                {{name}}
+            {{/if}}
+        </td>
+        <td>
+            {{#unless isBeingEdited}}
+                <button class="compact ui icon button editCategory"><i class="write icon"></i></button>
+            {{/unless}}
+
+            <button data-action="up" class="compact ui icon {{#if isFirstCategory}}disabled{{/if}} button">
+                <i class="angle up icon"></i>
+            </button>
+
+            <button data-action="down" class="compact ui icon {{#if isLastCategory}}disabled{{/if}} button">
+                <i class="angle down icon"></i>
+            </button>
+            <button class="compact ui icon button removeCategory"><i class="remove icon"></i></button>
+        </td>
     </tr>
+</template>
+
+<template name="newCategory">
+    <form class="newCategory">
+        <div class="ui input">
+            <input type="text" class="name" placeholder="New category...">
+        </div>
+        <button class="ui primary button" type="submit">Add</button>
+    </form>
 </template>

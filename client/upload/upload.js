@@ -29,7 +29,8 @@ Template.upload.events({
                     var transaction = new Transaction(null, 
                         values[dateIndex],
                         values[descriptionIndex],
-                        amount
+                        amount,
+                        ''
                         );
                     
                     transaction.save();

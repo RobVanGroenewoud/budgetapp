@@ -1,5 +1,5 @@
 Meteor.startup(function(){
-    return Meteor.methods({
+    Meteor.methods({
         removeAllTransactions: function() {
             return Transactions.remove({});
         }
