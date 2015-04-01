@@ -15,6 +15,9 @@
     </div>
 
     <a href="#" class="ui button clearall">Clear all</a>
+
+    {{> filters}}
+
     <table class="ui unstackable striped celled table">
         <thead>
             <tr>
@@ -30,6 +33,32 @@
             {{/each}}
         </tbody>
     </table>
+</template>
+
+<template name="filters">
+    
+    <div class="ui secondary menu">
+    {{#each years}}
+        <a href="{{pathFor 'transactions'}}/{{this}}" class="item">{{this}}</a>
+    {{/each}}
+    </div>
+
+    {{#if selectedYear}}
+    <div class="ui fluid twelve item secondary menu months">
+        <a href="{{pathFor 'transactions'}}/{{selectedYear}}/01" class="item" data-month="01">Jan</a>
+        <a href="{{pathFor 'transactions'}}/{{selectedYear}}/02" class="item" data-month="02">Feb</a>
+        <a href="{{pathFor 'transactions'}}/{{selectedYear}}/03" class="item" data-month="03">Mar</a>
+        <a href="{{pathFor 'transactions'}}/{{selectedYear}}/04" class="item" data-month="04">Apr</a>
+        <a href="{{pathFor 'transactions'}}/{{selectedYear}}/05" class="item" data-month="05">May</a>
+        <a href="{{pathFor 'transactions'}}/{{selectedYear}}/06" class="item" data-month="06">Jun</a>
+        <a href="{{pathFor 'transactions'}}/{{selectedYear}}/07" class="item" data-month="07">Jul</a>
+        <a href="{{pathFor 'transactions'}}/{{selectedYear}}/08" class="item" data-month="08">Aug</a>
+        <a href="{{pathFor 'transactions'}}/{{selectedYear}}/09" class="item" data-month="09">Sep</a>
+        <a href="{{pathFor 'transactions'}}/{{selectedYear}}/10" class="item" data-month="10">Oct</a>
+        <a href="{{pathFor 'transactions'}}/{{selectedYear}}/11" class="item" data-month="11">Nov</a>
+        <a href="{{pathFor 'transactions'}}/{{selectedYear}}/12" class="item" data-month="12">Dec</a>
+    </div>
+    {{/if}}
 </template>
 
 <template name="transaction">

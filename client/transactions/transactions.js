@@ -41,3 +41,18 @@ Template.categorySelect.events({
         Meteor.call('changeCategory', transactionId, categoryId );
     }
 });
+
+Template.filters.helpers({
+    years: function () {
+        return [2014,2015];
+    }
+});
+
+Template.filters.events({
+    'click .item': function (event) {
+        var clickedItem = $(event.target);
+        var month = clickedItem.attr('data-month');
+        Session.set('monthFilter', month);
+        clickedItem.addClass('active');
+    }
+});

@@ -19,6 +19,9 @@ Transactions.allow({
 Transaction = function(id, date, description, amount, category) {
     this._id = id;
     this._date = date;
+    this._year = date.substr(0,4);
+    this._month = date.substr(4,2);
+    this._day = date.substr(6,2);
     this._description = description;
     this._amount = amount;
     this._category = category;
@@ -31,6 +34,15 @@ Transaction.prototype = {
     },
     get date() {
         return this._date;
+    },
+    get year() {
+        return this._year;
+    },
+    get month() {
+        return this._month;
+    },
+    get day() {
+        return this._day;
     },
     get description() {
         return this._description;
@@ -53,6 +65,9 @@ Transaction.prototype = {
 
         var doc = {
             date : this.date,
+            year: this.year,
+            month: this.month,
+            day: this.day,
             description: this.description,
             amount: this.amount,
             category: this.category,
