@@ -30,7 +30,7 @@ Template.categorySelect.helpers({
 
 Template.categorySelectOption.helpers({
     isSelected: function () {
-        return Template.parentData(1).category ===  this._id;
+        return Template.parentData(1).category === this._id;
     }
 });
 
@@ -42,17 +42,22 @@ Template.categorySelect.events({
     }
 });
 
-Template.filters.helpers({
-    years: function () {
-        return [2014,2015];
-    }
+Template.filteredTransactions.onCreated(function(){
+    this.subscribe('transactions');
 });
 
-Template.filters.events({
-    'click .item': function (event) {
-        var clickedItem = $(event.target);
-        var month = clickedItem.attr('data-month');
-        Session.set('monthFilter', month);
-        clickedItem.addClass('active');
+Template.filteredTransactions.helpers({
+    transactions: function () {
+        var filters = {};
+
+        if (Session.get('selectedMonth')) {
+            filters.month = Session.get('selectedMonth');
+        }
+
+        if (Session.get('selectedMonth')) {
+            filters.year = Session.get('selectedYear');
+        }
+
+        return Transactions.find(filters);
     }
 });
