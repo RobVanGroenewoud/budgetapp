@@ -33,10 +33,18 @@ Template.filters.helpers({
 Template.filters.events({
     'click .js-month': function (event) {
         event.preventDefault();
-        Session.set('selectedMonth', this.monthNum);
+        if (Session.get('selectedMonth') === this.monthNum) {
+            Session.set('selectedMonth', undefined);
+        } else {      
+            Session.set('selectedMonth', this.monthNum);
+        }
     },
     'click .js-year': function (event) {
         event.preventDefault();
-        Session.set('selectedYear', this.year );
+        if (Session.get('selectedYear') === this.year) {
+            Session.set('selectedYear', undefined);
+        } else {       
+            Session.set('selectedYear', this.year );
+        }
     }
 });

@@ -54,7 +54,7 @@ Template.filteredTransactions.helpers({
             filters.month = Session.get('selectedMonth');
         }
 
-        if (Session.get('selectedMonth')) {
+        if (Session.get('selectedYear')) {
             filters.year = Session.get('selectedYear');
         }
 
