@@ -17,5 +17,7 @@ Meteor.publish('transactionsByMonth', function(year, month) {
 });
 
 Meteor.publish('categories', function(){
-    return Categories.find();
+    if (this.userId) {
+        return Categories.find();
+    }
 });

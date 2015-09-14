@@ -11,4 +11,14 @@
             <a href="#" class="item {{isActiveMonth}} js-month">{{monthName}}</a>
         {{/each}}
     </div>
+
+    {{> categoryFilter }}
+</template>
+
+<template name="categoryFilter">
+    <div class="category-filters">
+        {{#each categories}}
+            <a href="#" class="category-filter js-category">{{name}}</a>
+        {{/each}}
+    </div>
 </template>

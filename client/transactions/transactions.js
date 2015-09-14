@@ -58,6 +58,10 @@ Template.filteredTransactions.helpers({
             filters.year = Session.get('selectedYear');
         }
 
+        if (Session.get('selectedCategory')) {
+            filters.category = Session.get('selectedCategory');
+        }
+
         return Transactions.find(filters);
     }
 });

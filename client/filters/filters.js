@@ -48,3 +48,23 @@ Template.filters.events({
         }
     }
 });
+
+Template.categoryFilter.onCreated(function() {
+    this.subscribe('categories');
+});
+
+Template.categoryFilter.helpers({
+    categories: function () {
+        return Categories.find({});
+    }
+});
+
+Template.categoryFilter.events({
+    'click .js-category': function () {
+        if (Session.get('selectedCategory') === this._id) {
+            Session.set('selectedCategory', undefined);
+        } else {      
+            Session.set('selectedCategory', this._id);
+        }  
+    }
+});
