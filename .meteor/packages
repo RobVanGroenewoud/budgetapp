@@ -4,13 +4,26 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-platform
 insecure
-semantic:ui-css
-fourseven:scss
 accounts-google
 service-configuration
-msavin:mongol
 iron:router
 zimme:iron-router-active
 momentjs:moment
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check
+flemay:less-autoprefixer
+semantic:ui@=2.1.4
+semantic:ui-data@=2.1.4
