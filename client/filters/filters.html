@@ -1,0 +1,24 @@
+<template name="filters">
+    
+    <div class="ui fluid three item secondary menu years">
+        {{#each years}}
+            <a href="#" class="item {{isActiveYear}} js-year">{{year}}</a>
+        {{/each}}
+    </div>
+
+    <div class="ui fluid twelve item secondary menu months">
+        {{#each months}}
+            <a href="#" class="item {{isActiveMonth}} js-month">{{monthName}}</a>
+        {{/each}}
+    </div>
+
+    {{> categoryFilter }}
+</template>
+
+<template name="categoryFilter">
+    <div class="category-filters">
+        {{#each categories}}
+            <a href="#" class="category-filter js-category">{{name}}</a>
+        {{/each}}
+    </div>
+</template>

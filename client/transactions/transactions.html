@@ -1,7 +1,24 @@
 <template name="transactions">
-    <section class="ui segment">
-        {{> upload}}
-    </section>
+
+    <div class="ui huge breadcrumb">
+        <a class="section" href="{{pathFor 'transactions'}}">Transactions</a>
+        {{#if year}}
+            <i class="right chevron icon divider"></i>
+            <a class="section" href="{{pathFor 'transactionsByYear' year=year}}">{{year}}</a>
+            {{#if month}}
+            <i class="right chevron icon divider"></i>
+            <a class="section">{{monthName month}}</a>
+            {{/if}}
+        {{/if}}
+    </div>
+
+    {{#unless year}}
+        {{> yearLinks}}
+    {{ else }}
+        {{#unless month}}
+            {{> monthLinks}}
+        {{/unless}}
+    {{/unless}}
 
     <div class="ui small statistics">
         <div class="statistic">
@@ -14,7 +31,6 @@
         </div>
     </div>
 
-    <a href="#" class="ui button clearall">Clear all</a>
     <table class="ui unstackable striped celled table">
         <thead>
             <tr>
@@ -30,6 +46,27 @@
             {{/each}}
         </tbody>
     </table>
+
+    <section class="ui segment">
+        {{> upload}}
+        <a href="#" class="ui button clearall">Clear all</a>
+    </section>
+</template>
+
+<template name="yearLinks">
+    <div class="selectors">
+        {{#each years}}
+            <a class="ui button" href="{{pathFor 'transactionsByYear' year=year}}">{{year}}</a>
+        {{/each}}
+    </div>
+</template>
+
+<template name="monthLinks">
+    <div class="selectors">
+        {{#each months}}
+            <a class="ui button" href="{{pathFor 'transactionsByMonth' year=year month=.}}">{{shortMonthName .}}</a>
+        {{/each}}
+    </div>
 </template>
 
 <template name="transaction">
@@ -60,4 +97,22 @@
     {{else}}
     <option value="{{_id}}">{{name}}</option>
     {{/if}}
+</template>
+
+<template name="filteredTransactions">
+        <table class="ui unstackable striped celled table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th class="right aligned">Amount</th>
+                <th>Description</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each transactions}}
+                {{> transaction}}
+            {{/each}}
+        </tbody>
+    </table>
 </template>

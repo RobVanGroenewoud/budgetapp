@@ -7,14 +7,16 @@ Router.route('home', {
     path: '/'
 });
 
-Router.route('transactions', {
-    path: '/transactions',
-    waitOn: function() {
-        return Meteor.subscribe('transactions');
-    },
-    data: function() {
-        return { transactions: Transactions.find({}) };
-    }
+Router.route('transactions');
+
+Router.route('transactionsByYear', {
+    path: '/transactions/:year',
+    template: 'transactions'
+});
+
+Router.route('transactionsByMonth', {
+    path: '/transactions/:year/:month',
+    template: 'transactions'
 });
 
 Router.route('categories',{
