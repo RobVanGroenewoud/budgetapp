@@ -25,5 +25,5 @@ ejson
 spacebars
 check
 flemay:less-autoprefixer
-semantic:ui@=2.1.4
-semantic:ui-data@=2.1.4
+semantic:ui
+semantic:ui-data
